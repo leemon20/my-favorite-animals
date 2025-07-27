@@ -11,7 +11,7 @@ export const ANIMALS_STATE_TOKEN: StateToken<AnimalsStateModel> = new StateToken
   name: ANIMALS_STATE_TOKEN,
   defaults: initializeAnimalsStateModel(),
 })
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AnimalsState {
   private readonly animalsService = inject(AnimalsService);
 

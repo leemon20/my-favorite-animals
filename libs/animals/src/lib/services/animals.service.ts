@@ -4,9 +4,7 @@ import { parse } from 'valibot';
 import { AnimalModel } from '../models/animal.model';
 import { AnimalsModel, AnimalsSchema } from '../models/animals.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AnimalsService {
   private readonly mockData: AnimalsModel = {
     animals: [
@@ -15,14 +13,22 @@ export class AnimalsService {
         name: 'Red Panda',
         description:
           'The red panda, also known as the lesser panda, is a small mammal native to the eastern Himalayas and southwestern China. It has reddish-brown fur, a long, shaggy tail, and a waddling gait due to its shorter front legs. It is not closely related to the giant panda.',
-        gallery: ['assets/images/red-panda-1.jpg', 'assets/images/red-panda-2.jpg', 'assets/images/red-panda-3.jpg'],
+        gallery: [
+          'assets/images/animals/red-panda/1.jpeg',
+          'assets/images/animals/red-panda/2.jpeg',
+          'assets/images/animals/red-panda/3.jpeg',
+        ],
       },
       {
         id: '2',
-        name: 'Capybara',
+        name: 'Racoon',
         description:
-          "The capybara is the world's largest rodent, native to South America. It's a highly social species and can be found in large groups near bodies of water. They are known for their calm and friendly demeanor, often allowing other animals to sit on them.",
-        gallery: ['assets/images/capybara-1.jpg', 'assets/images/capybara-2.jpg', 'assets/images/capybara-3.jpg'],
+          'The raccoon is a medium-sized mammal native to North America. It is easily recognized by its black mask of fur around its eyes and its bushy tail with black rings. Raccoons are known for their intelligence and dexterity, often using their front paws to manipulate objects.',
+        gallery: [
+          'assets/images/animals/racoon/1.jpeg',
+          'assets/images/animals/racoon/2.jpeg',
+          'assets/images/animals/racoon/3.jpeg',
+        ],
       },
     ],
   };

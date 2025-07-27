@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { AnimalModel } from '../models/animal.model';
 
-const ACTION_PREFIX = '[Tarifvarianten]';
+const ACTION_PREFIX = '[Animals]';
 
 export class LoadAnimalsAction {
   public static readonly type: string = `${ACTION_PREFIX} Load Animals`;

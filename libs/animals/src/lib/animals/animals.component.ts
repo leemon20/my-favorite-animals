@@ -11,7 +11,7 @@ import { AnimalsStateQueries } from '../state/animals.queries';
   styleUrl: './animals.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Animals implements OnInit {
+export class AnimalsComponent implements OnInit {
   private readonly animalsService = inject(Store);
   private readonly animalstateQueries = inject(AnimalsStateQueries);
 

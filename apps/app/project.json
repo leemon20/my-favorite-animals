@@ -19,6 +19,11 @@
           {
             "glob": "**/*",
             "input": "apps/app/public"
+          },
+          {
+            "input": "libs/animals/public/assets",
+            "glob": "**/*",
+            "output": "assets"
           }
         ],
         "styles": ["apps/app/src/styles.scss"]
