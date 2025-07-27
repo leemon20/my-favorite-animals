@@ -1,10 +1,10 @@
 <p>Animals works!</p>
 @for (animal of $animals(); track animal.id) {
-<div>{{ animal.name }}</div>
-<div>{{ animal.description }}</div>
-<div>
-  @for (image of animal.gallery; track $index) {
-  <img [src]="image" alt="{{ animal.name }}" />
-  }
-</div>
+  <div>{{ animal.name }}</div>
+  <div>{{ animal.description }}</div>
+  <div>
+    @for (image of animal.gallery; track $index) {
+      <img [src]="image" alt="{{ animal.name }}" />
+    }
+  </div>
 }
