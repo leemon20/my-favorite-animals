@@ -1,6 +1,16 @@
 {
+  "tabWidth": 2,
+  "useTabs": false,
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 120,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ],
   "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-packagejson"]
 }

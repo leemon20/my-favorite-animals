@@ -1,7 +1,7 @@
-import { Animals } from '../animals/animals';
+import { AnimalModel } from '../models/animal.model';
 
 export interface AnimalsStateModel {
-  animals?: Animals;
+  animals?: AnimalModel[];
   loading: boolean;
   error?: string;
 }

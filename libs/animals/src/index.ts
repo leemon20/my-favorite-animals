@@ -1,1 +1,1 @@
-export * from './lib/animals/animals';
+export * from './lib/animals/animals.component';

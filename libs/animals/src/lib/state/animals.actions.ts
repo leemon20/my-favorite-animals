@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Animals } from '../animals/animals';
+import { AnimalModel } from '../models/animal.model';
 
 const ACTION_PREFIX = '[Tarifvarianten]';
 
@@ -10,7 +10,7 @@ export class LoadAnimalsAction {
 export class LoadAnimalsSuccessAction {
   public static readonly type: string = `${ACTION_PREFIX} Load Animals Success`;
 
-  constructor(public readonly payload: Animals) {}
+  constructor(public readonly payload: AnimalModel[]) {}
 }
 
 export class LoadAnimalsErrorAction {
