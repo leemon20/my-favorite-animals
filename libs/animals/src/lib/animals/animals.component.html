@@ -4,7 +4,7 @@
   <div>{{ animal.description }}</div>
   <div>
     @for (image of animal.gallery; track $index) {
-      <img [src]="image" alt="{{ animal.name }}" />
+      <img [ngSrc]="image" alt="{{ animal.name }}" width="400" height="200" />
     }
   </div>
 }

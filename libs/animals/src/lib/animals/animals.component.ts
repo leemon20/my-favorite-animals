@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { LoadAnimalsAction } from '../state/animals.actions';
@@ -6,7 +6,7 @@ import { AnimalsStateQueries } from '../state/animals.queries';
 
 @Component({
   selector: 'lib-animals',
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './animals.component.html',
   styleUrl: './animals.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
