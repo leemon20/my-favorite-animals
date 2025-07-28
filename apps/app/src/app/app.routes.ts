@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('@my-favorite-animals/animals').then((m) => m.AnimalsComponent),
+    loadComponent: () => import('@my-favorite-animals/animals').then((m) => m.AnimalsPage),
   },
   {
     path: '**',

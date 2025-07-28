@@ -1,26 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { AnimalsStateQueries, LoadAnimalsAction } from '@my-favorite-animals/animals-data';
+import { AnimalsStateQueries } from '@my-favorite-animals/animals-data';
 import { AnimalCardComponent } from '@my-favorite-animals/ui';
-import { Store } from '@ngxs/store';
 
 @Component({
-  selector: 'lib-animals',
+  selector: 'animals-list',
   imports: [CommonModule, MatProgressSpinner, AnimalCardComponent],
-  templateUrl: './animals.component.html',
-  styleUrl: './animals.component.scss',
+  templateUrl: './animals-list.component.html',
+  styleUrl: './animals-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnimalsComponent implements OnInit {
-  private readonly animalsService = inject(Store);
+export class AnimalsListComponent {
   private readonly animalstateQueries = inject(AnimalsStateQueries);
 
   public $loading = this.animalstateQueries.$loading;
   public $error = this.animalstateQueries.$error;
   public $animals = this.animalstateQueries.$animals;
-
-  ngOnInit(): void {
-    this.animalsService.dispatch(new LoadAnimalsAction());
-  }
 }

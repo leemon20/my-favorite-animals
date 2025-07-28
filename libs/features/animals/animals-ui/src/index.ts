@@ -1,2 +1,2 @@
 export * from './lib/animals.routes';
-export * from './lib/animals/animals.component';
+export * from './lib/pages/animals/animals.page';
