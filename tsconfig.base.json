@@ -18,6 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "@my-favorite-animals/animals": ["libs/features/animals/animals-ui/src/index.ts"],
+      "@my-favorite-animals/animals-data": ["libs/features/animals/animals-data/src/index.ts"],
       "@my-favorite-animals/dashboard": ["libs/features/dashboard/dashboard-ui/src/index.ts"],
       "@my-favorite-animals/ui": ["libs/common/ui/src/index.ts"]
     }
