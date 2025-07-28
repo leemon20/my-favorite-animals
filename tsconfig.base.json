@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@my-favorite-animals/animals": ["libs/features/animals/animals-ui/src/index.ts"],
-      "@my-favorite-animals/dashboard": ["libs/features/dashboard/dashboard-ui/src/index.ts"]
+      "@my-favorite-animals/dashboard": ["libs/features/dashboard/dashboard-ui/src/index.ts"],
+      "@my-favorite-animals/ui": ["libs/common/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
