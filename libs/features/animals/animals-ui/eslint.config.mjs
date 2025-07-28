@@ -12,7 +12,7 @@ export default [
         'error',
         {
           type: 'attribute',
-          prefix: 'animals',
+          prefix: 'mfa',
           style: 'camelCase',
         },
       ],
@@ -20,7 +20,7 @@ export default [
         'error',
         {
           type: 'element',
-          prefix: 'animals',
+          prefix: 'mfa',
           style: 'kebab-case',
         },
       ],

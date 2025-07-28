@@ -5,7 +5,7 @@ import { Store } from '@ngxs/store';
 import { AnimalsListComponent } from '../../components/animals-list/animals-list.component';
 
 @Component({
-  selector: 'animals-page',
+  selector: 'mfa-animals-page',
   imports: [CommonModule, AnimalsListComponent],
   templateUrl: './animals.page.html',
   styleUrl: './animals.page.scss',

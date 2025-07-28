@@ -5,7 +5,7 @@ import { AnimalsStateQueries } from '@my-favorite-animals/animals-data';
 import { AnimalCardComponent } from '@my-favorite-animals/ui';
 
 @Component({
-  selector: 'animals-list',
+  selector: 'mfa-animals-list',
   imports: [CommonModule, MatProgressSpinner, AnimalCardComponent],
   templateUrl: './animals-list.component.html',
   styleUrl: './animals-list.component.scss',

@@ -6,13 +6,13 @@ import { AnimalCardComponent } from '@my-favorite-animals/ui';
 import { Store } from '@ngxs/store';
 
 @Component({
-  selector: 'animals-widget',
+  selector: 'mfa-favorite-animals-widget',
   imports: [CommonModule, MatProgressSpinner, AnimalCardComponent],
-  templateUrl: './animals-widget.component.html',
-  styleUrl: './animals-widget.component.scss',
+  templateUrl: './favorite-animals-widget.component.html',
+  styleUrl: './favorite-animals-widget.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AnimalsWidgetComponent implements OnInit {
+export class FavoriteAnimalsWidgetComponent implements OnInit {
   private readonly store = inject(Store);
   private readonly animalstateQueries = inject(AnimalsStateQueries);
 
