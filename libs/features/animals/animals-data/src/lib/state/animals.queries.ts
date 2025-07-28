@@ -5,9 +5,13 @@ import { ANIMALS_STATE_TOKEN } from './animals.state';
 
 @Injectable({ providedIn: 'root' })
 export class AnimalsStateQueries {
-  public $loading = computed(() => this.$state().loading);
-  public $error = computed(() => this.$state().error);
-  public $animals = computed(() => this.$state().animals);
+  public $favoriteAnimalLoading = computed(() => this.$state().favoriteAnimalsLoading);
+  public $favoriteAnimalError = computed(() => this.$state().favoriteAnimalsLoadingError);
+  public $favoriteAnimals = computed(() => this.$state().favoriteAnimals);
+
+  public $animalOfDayLoading = computed(() => this.$state().animalOfDayLoading);
+  public $animalOfDayError = computed(() => this.$state().animalOfDayLoadingError);
+  public $animalOfDay = computed(() => this.$state().animalOfDay);
 
   private readonly $state: Signal<AnimalsStateModel> = select(ANIMALS_STATE_TOKEN);
 }

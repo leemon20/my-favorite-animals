@@ -3,18 +3,38 @@ import { AnimalModel } from '../models/animal.model';
 
 const ACTION_PREFIX = '[Animals]';
 
-export class LoadAnimalsAction {
-  public static readonly type: string = `${ACTION_PREFIX} Load Animals`;
+// MARK: Animals
+
+export class LoadFavoriteAnimalsAction {
+  public static readonly type: string = `${ACTION_PREFIX} Load Favorite Animals`;
 }
 
-export class LoadAnimalsSuccessAction {
-  public static readonly type: string = `${ACTION_PREFIX} Load Animals Success`;
+export class LoadFavoriteAnimalsSuccessAction {
+  public static readonly type: string = `${ACTION_PREFIX} Load Favorite Animals Success`;
 
   constructor(public readonly payload: AnimalModel[]) {}
 }
 
-export class LoadAnimalsErrorAction {
-  public static readonly type: string = `${ACTION_PREFIX} Load Animals Error`;
+export class LoadFavoriteAnimalsErrorAction {
+  public static readonly type: string = `${ACTION_PREFIX} Load Favorite Animals Error`;
+
+  constructor(public readonly payload: HttpErrorResponse) {}
+}
+
+// MARK: Animal Of The Day
+
+export class LoadAnimalOfDayAction {
+  public static readonly type: string = `${ACTION_PREFIX} Load Animal Of The Day`;
+}
+
+export class LoadAnimalOfDaySuccessAction {
+  public static readonly type: string = `${ACTION_PREFIX} Load Animal Of The Day Success`;
+
+  constructor(public readonly payload: AnimalModel | null) {}
+}
+
+export class LoadAnimalOfDayErrorAction {
+  public static readonly type: string = `${ACTION_PREFIX} Load Animal Of The Day Error`;
 
   constructor(public readonly payload: HttpErrorResponse) {}
 }

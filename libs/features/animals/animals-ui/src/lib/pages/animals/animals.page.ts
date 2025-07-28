@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { LoadAnimalsAction } from '@my-favorite-animals/animals-data';
+import { LoadFavoriteAnimalsAction } from '@my-favorite-animals/animals-data';
 import { Store } from '@ngxs/store';
 import { AnimalsListComponent } from '../../components/animals-list/animals-list.component';
 
@@ -15,6 +15,6 @@ export class AnimalsPage implements OnInit {
   private readonly store = inject(Store);
 
   ngOnInit(): void {
-    this.store.dispatch(new LoadAnimalsAction());
+    this.store.dispatch(new LoadFavoriteAnimalsAction());
   }
 }

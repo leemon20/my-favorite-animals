@@ -1,0 +1,23 @@
+<h1>Tier des Tages</h1>
+
+<div class="card-container">
+  @if ($loading()) {
+    <mat-spinner></mat-spinner>
+  } @else if ($error()) {
+    <div>Error loading animals</div>
+  } @else {
+    @let animal = $animal();
+
+    @if (animal) {
+      <div class="card-container">
+        <ui-animal-card
+          [name]="animal.name"
+          [image]="animal.gallery[0]"
+          [description]="animal.description"
+        ></ui-animal-card>
+      </div>
+    } @else {
+      <div>No animal of the day available</div>
+    }
+  }
+</div>

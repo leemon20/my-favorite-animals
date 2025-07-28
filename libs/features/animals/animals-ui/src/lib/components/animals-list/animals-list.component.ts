@@ -14,7 +14,7 @@ import { AnimalCardComponent } from '@my-favorite-animals/ui';
 export class AnimalsListComponent {
   private readonly animalstateQueries = inject(AnimalsStateQueries);
 
-  public $loading = this.animalstateQueries.$loading;
-  public $error = this.animalstateQueries.$error;
-  public $animals = this.animalstateQueries.$animals;
+  public $loading = this.animalstateQueries.$favoriteAnimalLoading;
+  public $error = this.animalstateQueries.$favoriteAnimalError;
+  public $animals = this.animalstateQueries.$favoriteAnimals;
 }
