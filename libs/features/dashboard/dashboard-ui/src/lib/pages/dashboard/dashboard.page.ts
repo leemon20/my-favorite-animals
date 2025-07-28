@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AnimalOfDayWidget, FavoriteAnimalsWidget } from '@my-favorite-animals/animals';
+import { AnimalOfDayWidget, FavoriteAnimalsWidget } from '@my-favorite-animals/animals-widgets';
 
 @Component({
   selector: 'mfa-dashboard',
