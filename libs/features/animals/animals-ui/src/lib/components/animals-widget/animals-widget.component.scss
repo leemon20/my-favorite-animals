@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-inline-start: 16px;
+  margin-inline-end: 16px;
+}
+
+.card-container {
+  margin-block-start: 16px;
+  margin-block-end: 16px;
+}

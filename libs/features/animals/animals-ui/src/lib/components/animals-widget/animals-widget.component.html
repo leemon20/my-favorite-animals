@@ -1,0 +1,17 @@
+<h1>Meine Lieblingstiere</h1>
+
+@if ($loading()) {
+  <mat-spinner></mat-spinner>
+} @else if ($error()) {
+  <div>Error loading animals</div>
+} @else {
+  @for (animal of $animals(); track animal.id) {
+    <div class="card-container">
+      <ui-animal-card
+        [name]="animal.name"
+        [image]="animal.gallery[0]"
+        [description]="animal.description"
+      ></ui-animal-card>
+    </div>
+  }
+}
