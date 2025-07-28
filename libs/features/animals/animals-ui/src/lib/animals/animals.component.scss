@@ -14,19 +14,3 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
-.card {
-  max-width: 400px;
-  margin: 16px;
-}
-
-.card img {
-  width: auto;
-  height: auto;
-}
-
-@media (max-width: 600px) {
-  .card {
-    max-width: 300px;
-  }
-}

@@ -1,23 +1,14 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { AnimalCardComponent } from '@my-favorite-animals/ui';
 import { Store } from '@ngxs/store';
 import { LoadAnimalsAction } from '../state/animals.actions';
 import { AnimalsStateQueries } from '../state/animals.queries';
 
 @Component({
   selector: 'lib-animals',
-  imports: [
-    CommonModule,
-    NgOptimizedImage,
-    MatProgressSpinner,
-    MatCard,
-    MatCardHeader,
-    MatCardTitle,
-    MatCardContent,
-    MatCardActions,
-  ],
+  imports: [CommonModule, MatProgressSpinner, AnimalCardComponent],
   templateUrl: './animals.component.html',
   styleUrl: './animals.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
