@@ -1,10 +1,36 @@
-<p>Animals works!</p>
-@for (animal of $animals(); track animal.id) {
-  <div>{{ animal.name }}</div>
-  <div>{{ animal.description }}</div>
-  <div>
-    @for (image of animal.gallery; track $index) {
-      <img [ngSrc]="image" alt="{{ animal.name }}" width="400" height="200" />
-    }
-  </div>
+<h1>Meine Lieblingstiere</h1>
+
+@if ($loading()) {
+  <mat-spinner></mat-spinner>
+} @else if ($error()) {
+  <div>Error loading animals</div>
+} @else {
+  @for (animal of $animals(); track animal.id) {
+    <div class="card-container">
+      @for (image of animal.gallery; track $index) {
+        <mat-card class="card" appearance="outlined">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ animal.name }}</mat-card-title>
+          </mat-card-header>
+          <img
+            [ngSrc]="image"
+            alt="{{ animal.name }}"
+            width="400"
+            height="200"
+            sizes="(max-width: 600px) 50vw, 100vw"
+          />
+          <mat-card-content>
+            <p>{{ animal.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button matButton>LIKE</button>
+            <button matButton>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <div class=""></div>
+      }
+    </div>
+  }
 }
