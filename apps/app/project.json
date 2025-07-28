@@ -21,7 +21,7 @@
             "input": "apps/app/public"
           },
           {
-            "input": "libs/animals/public/assets",
+            "input": "libs/features/animals/animals-ui/public/assets",
             "glob": "**/*",
             "output": "assets"
           }

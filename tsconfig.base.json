@@ -17,7 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-favorite-animals/animals": ["libs/animals/src/index.ts"],
+      "@my-favorite-animals/animals": ["libs/features/animals/animals-ui/src/index.ts"],
       "@my-favorite-animals/dashboard": ["libs/dashboard/src/index.ts"]
     }
   },
