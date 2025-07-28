@@ -1,5 +1,4 @@
 import { Route } from '@angular/router';
-import { AnimalsComponent } from '@my-favorite-animals/animals';
 
 export const appRoutes: Route[] = [
   // {
@@ -10,7 +9,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    component: AnimalsComponent,
+    loadComponent: () => import('@my-favorite-animals/animals').then((m) => m.AnimalsComponent),
   },
   {
     path: '**',

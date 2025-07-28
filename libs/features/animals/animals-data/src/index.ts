@@ -1,1 +1,3 @@
-export * from './lib/animals-data/animals-data';
+export * from './lib/models';
+export * from './lib/services';
+export * from './lib/state';
