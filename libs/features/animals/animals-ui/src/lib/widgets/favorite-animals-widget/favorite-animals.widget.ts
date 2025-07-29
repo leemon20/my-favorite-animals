@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { AnimalsStateQueries, LoadFavoriteAnimalsAction } from '@my-favorite-animals/animals-data';
+import { AnimalsStateQueries, LoadFavoriteAnimalsAction, NavigationService } from '@my-favorite-animals/animals-data';
 import { AnimalCardComponent } from '@my-favorite-animals/ui';
 import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'mfa-favorite-animals-widget',
-  imports: [CommonModule, MatProgressSpinner, AnimalCardComponent],
+  imports: [CommonModule, MatProgressSpinner, AnimalCardComponent, MatButton],
   templateUrl: './favorite-animals.widget.html',
   styleUrl: './favorite-animals.widget.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,6 +16,7 @@ import { Store } from '@ngxs/store';
 export class FavoriteAnimalsWidget implements OnInit {
   private readonly store = inject(Store);
   private readonly animalstateQueries = inject(AnimalsStateQueries);
+  private readonly navigationService = inject(NavigationService);
 
   public $loading = this.animalstateQueries.$favoriteAnimalLoading;
   public $error = this.animalstateQueries.$favoriteAnimalError;
@@ -31,5 +33,9 @@ export class FavoriteAnimalsWidget implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new LoadFavoriteAnimalsAction());
+  }
+
+  protected onGoToFavoriteAnimals() {
+    this.navigationService.navigateToFavoriteAnimalsPage();
   }
 }

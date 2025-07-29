@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Action, State, StateContext, StateToken } from '@ngxs/store';
-import { catchError, map, Observable, switchMap } from 'rxjs';
+import { catchError, EMPTY, map, Observable, switchMap } from 'rxjs';
 import { AnimalsService } from '../services/animals.service';
 import {
   LoadAnimalOfDayAction,
@@ -24,6 +24,10 @@ export class AnimalsState {
 
   @Action(LoadFavoriteAnimalsAction, { cancelUncompleted: true })
   public loadFavoriteAnimals(ctx: StateContext<AnimalsStateModel>): Observable<void> {
+    if (ctx.getState().favoriteAnimals) {
+      return EMPTY;
+    }
+
     ctx.patchState({
       favoriteAnimalsLoading: true,
       favoriteAnimals: undefined,

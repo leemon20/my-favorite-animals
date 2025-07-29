@@ -9,7 +9,7 @@ export class NavigationService {
   private readonly animalsRoute = '/animals';
   private readonly defaultFallbackRoute = '/dashboard';
 
-  navigateToAnimals(): void {
+  navigateToFavoriteAnimalsPage(): void {
     this.previousUrl = this.router.url;
     this.router.navigate([this.animalsRoute]);
   }
