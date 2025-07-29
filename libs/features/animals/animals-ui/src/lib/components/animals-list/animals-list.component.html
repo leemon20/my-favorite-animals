@@ -3,11 +3,17 @@
 } @else if ($error()) {
   <div>Error loading animals</div>
 } @else {
-  @for (animal of $animals(); track animal.id) {
-    <div class="card-container">
-      @for (image of animal.gallery; track $index) {
-        <ui-animal-card [name]="animal.name" [image]="image" [description]="animal.description"></ui-animal-card>
-      }
-    </div>
+  @let animals = $animals();
+
+  @if (animals && animals.length === 0) {
+    <div>Lieblingstiere nicht gefunden</div>
+  } @else {
+    @for (animal of animals; track animal.id) {
+      <div class="card-container">
+        @for (image of animal.gallery; track $index) {
+          <ui-animal-card [name]="animal.name" [image]="image" [description]="animal.description"></ui-animal-card>
+        }
+      </div>
+    }
   }
 }
