@@ -17,7 +17,7 @@ export class AnimalsListComponent {
   private readonly navigationService = inject(NavigationService);
 
   public $loading = this.animalstateQueries.$favoriteAnimalLoading;
-  public $error = this.animalstateQueries.$favoriteAnimalError;
+  public $error = this.animalstateQueries.$favoriteAnimalsLoadingError;
   public $animals = this.animalstateQueries.$favoriteAnimals;
 
   protected onBack() {
