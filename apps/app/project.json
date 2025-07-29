@@ -5,18 +5,25 @@
   "prefix": "app",
   "sourceRoot": "apps/app/src",
   "tags": [],
+  "i18n": {
+    "sourceLocale": "de",
+    "locales": {
+      "en-US": {
+        "translation": "apps/app/src/locale/messages.en-US.xlf"
+      }
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
+        "statsJson": true,
+        "localize": true,
+        "i18nMissingTranslation": "error",
         "outputPath": "dist/apps/app",
         "browser": "apps/app/src/main.ts",
-        "polyfills": [
-          "@angular/localize/init"
-        ],
+        "polyfills": ["@angular/localize/init"],
         "tsConfig": "apps/app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -30,9 +37,7 @@
             "output": "assets"
           }
         ],
-        "styles": [
-          "apps/app/src/styles.scss"
-        ]
+        "styles": ["apps/app/src/styles.scss"]
       },
       "configurations": {
         "production": {
@@ -54,6 +59,12 @@
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true
+        },
+        "de": {
+          "localize": ["de"]
+        },
+        "en-US": {
+          "localize": ["en-US"]
         }
       },
       "defaultConfiguration": "production"
@@ -67,6 +78,12 @@
         },
         "development": {
           "buildTarget": "app:build:development"
+        },
+        "de": {
+          "buildTarget": "app:build:development,de"
+        },
+        "en-US": {
+          "buildTarget": "app:build:development,en-US"
         }
       },
       "defaultConfiguration": "development"
@@ -74,7 +91,8 @@
     "extract-i18n": {
       "executor": "@angular/build:extract-i18n",
       "options": {
-        "buildTarget": "app:build"
+        "buildTarget": "app:build",
+        "outputPath": "apps/app/src/locale"
       }
     },
     "lint": {
@@ -82,9 +100,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": [
-        "{options.reportsDirectory}"
-      ],
+      "outputs": ["{options.reportsDirectory}"],
       "options": {
         "reportsDirectory": "../../coverage/apps/app"
       }

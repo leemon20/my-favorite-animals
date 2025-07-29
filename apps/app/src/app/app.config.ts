@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
   isDevMode,
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
       withNgxsReduxDevtoolsPlugin({ disabled: !isDevMode() }),
       withNgxsRouterPlugin(),
     ),
+    provideHttpClient(),
     provideRouter(appRoutes, withComponentInputBinding()),
   ],
 };

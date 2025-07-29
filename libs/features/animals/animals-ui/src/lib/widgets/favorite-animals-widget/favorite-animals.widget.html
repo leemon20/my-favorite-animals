@@ -1,15 +1,15 @@
-<h1>Meine Lieblingstiere</h1>
+<h1 i18n="@@animals-list-widget.title">Meine Lieblingstiere</h1>
 
 <div class="card-container">
   @if ($loading()) {
     <mat-spinner></mat-spinner>
   } @else if ($error()) {
-    <div>Error loading animals</div>
+    <div i18n="@@animals-list-widget.loading-error">Error loading animals</div>
   } @else {
     @let animals = $animals();
 
     @if (animals && animals.length === 0) {
-      <div>Lieblingstiere nicht gefunden</div>
+      <div i18n="@@animals-list-widget.empty">Lieblingstiere nicht gefunden</div>
     } @else {
       @for (animal of animals; track animal.id) {
         <div class="card-container">
@@ -24,4 +24,6 @@
   }
 </div>
 
-<button matButton="elevated" (click)="onGoToFavoriteAnimals()">Alle Lieblingstiere anzeigen</button>
+<button matButton="elevated" (click)="onGoToFavoriteAnimals()" i18n="@@animals-list-widget.show-all">
+  Alle Lieblingstiere anzeigen
+</button>

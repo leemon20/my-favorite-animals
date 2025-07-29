@@ -1,12 +1,12 @@
 @if ($loading()) {
   <mat-spinner></mat-spinner>
 } @else if ($error()) {
-  <div>Error loading animals</div>
+  <div i18n="@@animals-list.loading-error">Fehler beim Laden der Tiere</div>
 } @else {
   @let animals = $animals();
 
   @if (animals && animals.length === 0) {
-    <div>Lieblingstiere nicht gefunden</div>
+    <div i18n="@@animals-list.empty">Lieblingstiere nicht gefunden</div>
   } @else {
     @for (animal of animals; track animal.id) {
       <div class="card-container">
@@ -18,4 +18,4 @@
   }
 }
 
-<button matButton="elevated" (click)="onBack()">Zurück</button>
+<button matButton="elevated" (click)="onBack()" i18n="@@animals-list.back">Zurück</button>

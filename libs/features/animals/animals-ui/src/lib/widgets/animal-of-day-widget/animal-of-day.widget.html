@@ -1,10 +1,10 @@
-<h1>Tier des Tages</h1>
+<h1 i18n="@@animals-of-day-widget.title">Tier des Tages</h1>
 
 <div class="card-container">
   @if ($loading()) {
     <mat-spinner></mat-spinner>
   } @else if ($error()) {
-    <div>Error loading animals</div>
+    <div i18n="@@animals-of-day-widget.loading-error">Error loading animals</div>
   } @else {
     @let animal = $animal();
 
@@ -17,7 +17,7 @@
         ></ui-animal-card>
       </div>
     } @else {
-      <div>Lieblingstier des Tages nicht gefunden</div>
+      <div i18n="@@animals-of-day-widget.empty">Lieblingstier des Tages nicht gefunden</div>
     }
   }
 </div>
