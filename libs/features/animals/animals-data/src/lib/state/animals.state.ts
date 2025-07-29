@@ -22,9 +22,11 @@ export const ANIMALS_STATE_TOKEN: StateToken<AnimalsStateModel> = new StateToken
 export class AnimalsState {
   private readonly animalsService = inject(AnimalsService);
 
-  @Action(LoadFavoriteAnimalsAction, { cancelUncompleted: true })
+  @Action(LoadFavoriteAnimalsAction)
   public loadFavoriteAnimals(ctx: StateContext<AnimalsStateModel>): Observable<void> {
-    if (ctx.getState().favoriteAnimals) {
+    const state = ctx.getState();
+
+    if (state.favoriteAnimals || state.favoriteAnimalsLoading) {
       return EMPTY;
     }
 
@@ -62,7 +64,7 @@ export class AnimalsState {
     return ctx.patchState({
       favoriteAnimals: undefined,
       favoriteAnimalsLoading: false,
-      favoriteAnimalsLoadingError: action.payload.error?.message || 'An error occurred while loading favorite animals.',
+      favoriteAnimalsLoadingError: action.payload.error?.message || 'Failed to load favorite animals',
     });
   }
 
@@ -96,8 +98,7 @@ export class AnimalsState {
     return ctx.patchState({
       animalOfDay: undefined,
       animalOfDayLoading: false,
-      animalOfDayLoadingError:
-        action.payload.error?.message || 'An error occurred while loading the animal of the day.',
+      animalOfDayLoadingError: action.payload.error?.message || 'Failed to load animal of the day',
     });
   }
 }
