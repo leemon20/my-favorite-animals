@@ -8,6 +8,4 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  protected title = 'app';
-}
+export class AppComponent {}
