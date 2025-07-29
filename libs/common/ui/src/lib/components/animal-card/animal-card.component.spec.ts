@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -18,7 +17,7 @@ describe('AnimalCardComponent', () => {
     })
       .overrideComponent(AnimalCardComponent, {
         set: {
-          imports: [CommonModule],
+          imports: [],
           schemas: [NO_ERRORS_SCHEMA],
         },
       })

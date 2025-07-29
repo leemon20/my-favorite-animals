@@ -9,8 +9,7 @@
     "target": "es2022",
     "moduleResolution": "bundler",
     "isolatedModules": true,
-    "emitDecoratorMetadata": false,
-    "module": "preserve"
+    "emitDecoratorMetadata": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
