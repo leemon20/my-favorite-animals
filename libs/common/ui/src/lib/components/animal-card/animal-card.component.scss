@@ -3,13 +3,13 @@
 }
 
 .card {
+  overflow: hidden;
   max-width: 25rem;
   margin: var(--spacing-4);
 }
 
 .card img {
   width: auto;
-  height: auto;
 }
 
 @media (max-width: 600px) {

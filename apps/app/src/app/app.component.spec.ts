@@ -24,7 +24,7 @@ describe('App', () => {
     fixture.detectChanges();
   });
 
-  it('should render title', () => {
+  it('should render router outlet', () => {
     const el = fixture.debugElement.query(By.css('router-outlet'));
 
     expect(el).toBeTruthy();
