@@ -1,0 +1,3 @@
+@for (image of animal().gallery; track $index) {
+  <ui-animal-card [name]="animal().name" [image]="image" [description]="animal().description"></ui-animal-card>
+}

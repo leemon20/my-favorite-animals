@@ -1,19 +1,15 @@
 @if ($loading()) {
   <mat-spinner></mat-spinner>
 } @else if ($error()) {
-  <div i18n="@@animals-list.loading-error">Fehler beim Laden der Tiere</div>
+  <div data-test-id="loading-error" i18n="@@animals-list.loading-error">Fehler beim Laden der Tiere</div>
 } @else {
   @let animals = $animals();
 
   @if (animals && animals.length === 0) {
-    <div i18n="@@animals-list.empty">Lieblingstiere nicht gefunden</div>
+    <div data-test-id="empty-state" i18n="@@animals-list.empty">Lieblingstiere nicht gefunden</div>
   } @else {
     @for (animal of animals; track animal.id) {
-      <div class="card-container">
-        @for (image of animal.gallery; track $index) {
-          <ui-animal-card [name]="animal.name" [image]="image" [description]="animal.description"></ui-animal-card>
-        }
-      </div>
+      <mfa-animal-gallery [animal]="animal"></mfa-animal-gallery>
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "animals",
+  "name": "animals-ui",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/features/animals/animals-ui/src",
   "prefix": "lib",
