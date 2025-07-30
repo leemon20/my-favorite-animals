@@ -1,22 +1,20 @@
-import { NO_ERRORS_SCHEMA, signal, Signal, WritableSignal } from '@angular/core';
+import { NO_ERRORS_SCHEMA, signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { AnimalModel, AnimalsStateQueries, NavigationService } from '@my-favorite-animals/animals-data';
 import { Mock } from 'vitest';
 import { AnimalsListComponent } from './animals-list.component';
 
-vi.stubGlobal('$localize', (messageParts: TemplateStringsArray) => messageParts.raw.join('').split(':')[1]);
-
-type MutableMock<T> = {
-  [K in keyof T]: T[K] extends Signal<infer R> ? WritableSignal<R> : T[K] extends Mock ? T[K] & Mock<T[K]> : T[K];
-};
-
 describe('AnimalsListComponent', () => {
   let fixture: ComponentFixture<AnimalsListComponent>;
   let navigationServiceMock: {
     goBack: Mock<() => void>;
   };
-  let animalStateQueriesMock: MutableMock<AnimalsStateQueries>;
+  let animalStateQueriesMock: {
+    $favoriteAnimalLoading: WritableSignal<boolean>;
+    $favoriteAnimalsLoadingError: WritableSignal<string | undefined>;
+    $favoriteAnimals: WritableSignal<AnimalModel[] | undefined>;
+  };
   let animal: AnimalModel;
 
   beforeEach(async () => {
@@ -35,7 +33,7 @@ describe('AnimalsListComponent', () => {
       $favoriteAnimalLoading: signal(false),
       $favoriteAnimalsLoadingError: signal(undefined),
       $favoriteAnimals: signal(undefined),
-    } as MutableMock<AnimalsStateQueries>;
+    } satisfies Partial<AnimalsStateQueries>;
 
     await TestBed.configureTestingModule({
       imports: [AnimalsListComponent],
@@ -61,7 +59,7 @@ describe('AnimalsListComponent', () => {
     it('should properly configure back button', () => {
       const el = fixture.debugElement.query(By.css('button'));
 
-      expect(el.nativeElement.hasAttribute('matButton')).toBe(true);
+      expect(el.nativeElement.attributes['matButton'].value).toBe('elevated');
       expect(el.nativeElement.textContent).toContain('@@animals-list.back');
     });
 
