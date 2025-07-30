@@ -79,7 +79,7 @@ describe('AnimalOfDayWidget', () => {
       const spinnerEl = () => fixture.debugElement.query(By.css('mat-spinner'));
       const errorEl = () => fixture.debugElement.query(By.css('[data-test-id="loading-error"]'));
       const emptyStateEl = () => fixture.debugElement.query(By.css('[data-test-id="empty-state"]'));
-      const animalGalleryEl = () => fixture.debugElement.query(By.css('ui-animal-card'));
+      const animalCardEl = () => fixture.debugElement.query(By.css('ui-animal-card'));
 
       it('should properly configure ui in loading state', () => {
         animalStateQueriesMock.$animalOfDayLoading.set(true);
@@ -88,7 +88,7 @@ describe('AnimalOfDayWidget', () => {
         expect(spinnerEl()).toBeTruthy();
         expect(errorEl()).toBeFalsy();
         expect(emptyStateEl()).toBeFalsy();
-        expect(animalGalleryEl()).toBeFalsy();
+        expect(animalCardEl()).toBeFalsy();
       });
 
       it('should properly configure ui in error state', () => {
@@ -100,7 +100,7 @@ describe('AnimalOfDayWidget', () => {
 
         expect(spinnerEl()).toBeFalsy();
         expect(emptyStateEl()).toBeFalsy();
-        expect(animalGalleryEl()).toBeFalsy();
+        expect(animalCardEl()).toBeFalsy();
       });
 
       it('should properly configure no data state', () => {
@@ -112,17 +112,17 @@ describe('AnimalOfDayWidget', () => {
 
         expect(spinnerEl()).toBeFalsy();
         expect(errorEl()).toBeFalsy();
-        expect(animalGalleryEl()).toBeFalsy();
+        expect(animalCardEl()).toBeFalsy();
       });
 
       it('should properly configure data state', () => {
         animalStateQueriesMock.$animalOfDay.set(animal);
         fixture.detectChanges();
 
-        expect(animalGalleryEl()).toBeTruthy();
-        expect(animalGalleryEl().properties['name']).toBe(animal.name);
-        expect(animalGalleryEl().properties['image']).toBe(animal.gallery[0]);
-        expect(animalGalleryEl().properties['description']).toBe(animal.description);
+        expect(animalCardEl()).toBeTruthy();
+        expect(animalCardEl().properties['name']).toBe(animal.name);
+        expect(animalCardEl().properties['image']).toBe(animal.gallery[0]);
+        expect(animalCardEl().properties['description']).toBe(animal.description);
 
         expect(spinnerEl()).toBeFalsy();
         expect(errorEl()).toBeFalsy();

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { AnimalsStateQueries, LoadFavoriteAnimalsAction, NavigationService } from '@my-favorite-animals/animals-data';
@@ -19,17 +19,8 @@ export class FavoriteAnimalsWidget implements OnInit {
   private readonly navigationService = inject(NavigationService);
 
   protected $loading = this.animalstateQueries.$favoriteAnimalLoading;
-  protected $error = this.animalstateQueries.$animalOfDayLoadingError;
+  protected $error = this.animalstateQueries.$favoriteAnimalsLoadingError;
   protected $animals = this.animalstateQueries.$favoriteAnimals;
-  protected $animalImage = computed(() => {
-    const animals = this.$animals() ?? [];
-
-    return animals.reduce((acc, animal) => {
-      acc.set(animal.id, animal.gallery[0]);
-
-      return acc;
-    }, new Map<string, string>());
-  });
 
   ngOnInit(): void {
     this.store.dispatch(new LoadFavoriteAnimalsAction());
