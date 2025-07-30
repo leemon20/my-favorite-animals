@@ -23,67 +23,67 @@
           <context context-type="linenumber">9,11</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="animals-list.back" datatype="html">
-        <source>Back</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/components/animals-list/animals-list.component.html</context>
-          <context context-type="linenumber">21,22</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="animals-page.title" datatype="html">
-        <source>My Favorite Animals</source>
+        <source>My favorite animals</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/pages/animals/animals.page.html</context>
           <context context-type="linenumber">1,3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="animals-of-day-widget.title" datatype="html">
-        <source>Animal of the Day</source>
+      <trans-unit id="animals-list.back" datatype="html">
+        <source>Back</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/animal-of-day-widget/animal-of-day.widget.html</context>
+          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/pages/animals/animals.page.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="animals-of-day-widget.title" datatype="html">
+        <source>Animal of the day</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/animal-of-day-widget/animal-of-day.widget.html</context>
           <context context-type="linenumber">1,4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="animals-of-day-widget.loading-error" datatype="html">
         <source>Error loading animals</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/animal-of-day-widget/animal-of-day.widget.html</context>
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/animal-of-day-widget/animal-of-day.widget.html</context>
           <context context-type="linenumber">7,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="animals-of-day-widget.empty" datatype="html">
         <source>Favorite animal of the day not found</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/animal-of-day-widget/animal-of-day.widget.html</context>
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/animal-of-day-widget/animal-of-day.widget.html</context>
           <context context-type="linenumber">20,24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="animals-list-widget.title" datatype="html">
-        <source>My Favorite Animals</source>
+      <trans-unit id="favorite-animals-widget.title" datatype="html">
+        <source>My favorite animals</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/favorite-animals-widget/favorite-animals.widget.html</context>
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/favorite-animals-widget/favorite-animals.widget.html</context>
           <context context-type="linenumber">1,4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="animals-list-widget.loading-error" datatype="html">
+      <trans-unit id="favorite-animals-widget.loading-error" datatype="html">
         <source>Error loading animals</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/favorite-animals-widget/favorite-animals.widget.html</context>
-          <context context-type="linenumber">7,9</context>
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/favorite-animals-widget/favorite-animals.widget.html</context>
+          <context context-type="linenumber">7,11</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="animals-list-widget.empty" datatype="html">
+      <trans-unit id="favorite-animals-widget.empty" datatype="html">
         <source>Favorite animals not found</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/favorite-animals-widget/favorite-animals.widget.html</context>
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/favorite-animals-widget/favorite-animals.widget.html</context>
           <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="animals-list-widget.show-all" datatype="html">
+      <trans-unit id="favorite-animals-widget.show-all" datatype="html">
         <source>Show all favorite animals</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/widgets/favorite-animals-widget/favorite-animals.widget.html</context>
-          <context context-type="linenumber">28,30</context>
+          <context context-type="sourcefile">libs/features/animals/animals-widgets/src/lib/favorite-animals-widget/favorite-animals.widget.html</context>
+          <context context-type="linenumber">33,35</context>
         </context-group>
       </trans-unit>
     </body>
