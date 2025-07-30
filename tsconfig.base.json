@@ -17,9 +17,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my-favorite-animals/animals-ui": ["libs/features/animals/animals-ui/src/index.ts"],
-      "@my-favorite-animals/animals-widgets": ["libs/features/animals/animals-ui/src/lib/widgets/index.ts"],
       "@my-favorite-animals/animals-data": ["libs/features/animals/animals-data/src/index.ts"],
+      "@my-favorite-animals/animals-ui": ["libs/features/animals/animals-ui/src/index.ts"],
+      "@my-favorite-animals/animals-widgets": ["libs/features/animals/animals-widgets/src/index.ts"],
       "@my-favorite-animals/dashboard": ["libs/features/dashboard/dashboard-ui/src/index.ts"],
       "@my-favorite-animals/ui": ["libs/common/ui/src/index.ts"]
     }
