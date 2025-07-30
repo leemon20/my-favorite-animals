@@ -42,6 +42,7 @@ describe('AnimalCardComponent', () => {
     expect(imgEl.nativeElement.attributes['width'].value).toBe('400');
     expect(imgEl.nativeElement.attributes['height'].value).toBe('200');
     expect(imgEl.properties['placeholder']).toBe(PLACEHOLDER_IMAGE);
+    expect(imgEl.nativeElement.hasAttribute('priority')).toBe(true);
 
     const contentEl = el.query(By.css('mat-card-content'));
     expect(contentEl).toBeTruthy();
