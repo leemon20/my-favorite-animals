@@ -24,6 +24,11 @@
   }
 </div>
 
-<button matButton="elevated" (click)="onGoToFavoriteAnimals()" i18n="@@favorite-animals-widget.show-all">
+<button
+  data-test-id="back-button"
+  matButton="elevated"
+  (click)="onGoToFavoriteAnimals()"
+  i18n="@@favorite-animals-widget.show-all"
+>
   Alle Lieblingstiere anzeigen
 </button>

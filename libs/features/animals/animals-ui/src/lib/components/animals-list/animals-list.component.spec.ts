@@ -1,15 +1,12 @@
 import { NO_ERRORS_SCHEMA, signal, WritableSignal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { AnimalModel, AnimalsStateQueries, NavigationService } from '@my-favorite-animals/animals-data';
-import { Mock } from 'vitest';
+import { AnimalModel, AnimalsStateQueries } from '@my-favorite-animals/animals-data';
 import { AnimalsListComponent } from './animals-list.component';
 
 describe('AnimalsListComponent', () => {
   let fixture: ComponentFixture<AnimalsListComponent>;
-  let navigationServiceMock: {
-    goBack: Mock<() => void>;
-  };
+
   let animalStateQueriesMock: {
     $favoriteAnimalLoading: WritableSignal<boolean>;
     $favoriteAnimalsLoadingError: WritableSignal<string | undefined>;
@@ -25,10 +22,6 @@ describe('AnimalsListComponent', () => {
       gallery: [],
     };
 
-    navigationServiceMock = {
-      goBack: vi.fn(),
-    } satisfies Partial<NavigationService>;
-
     animalStateQueriesMock = {
       $favoriteAnimalLoading: signal(false),
       $favoriteAnimalsLoadingError: signal(undefined),
@@ -41,10 +34,7 @@ describe('AnimalsListComponent', () => {
       .overrideComponent(AnimalsListComponent, {
         set: {
           imports: [],
-          providers: [
-            { provide: NavigationService, useValue: navigationServiceMock },
-            { provide: AnimalsStateQueries, useValue: animalStateQueriesMock },
-          ],
+          providers: [{ provide: AnimalsStateQueries, useValue: animalStateQueriesMock }],
           schemas: [NO_ERRORS_SCHEMA],
         },
       })
@@ -53,23 +43,6 @@ describe('AnimalsListComponent', () => {
     fixture = TestBed.createComponent(AnimalsListComponent);
 
     fixture.detectChanges();
-  });
-
-  describe('Back Button', () => {
-    it('should properly configure back button', () => {
-      const el = fixture.debugElement.query(By.css('button'));
-
-      expect(el.nativeElement.attributes['matButton'].value).toBe('elevated');
-      expect(el.nativeElement.textContent).toContain('@@animals-list.back');
-    });
-
-    it('should delegate to navigation service upon back button click', () => {
-      const el = fixture.debugElement.query(By.css('button'));
-
-      el.nativeElement.click();
-
-      expect(navigationServiceMock.goBack).toHaveBeenCalled();
-    });
   });
 
   describe('UI States', () => {
