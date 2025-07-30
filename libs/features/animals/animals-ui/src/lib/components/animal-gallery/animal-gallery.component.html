@@ -1,3 +1,7 @@
-@for (image of animal().gallery; track $index) {
-  <ui-animal-card [name]="animal().name" [image]="image" [description]="animal().description"></ui-animal-card>
+@if (animal().gallery.length === 0) {
+  <div data-test-id="no-images" i18n="@@animal-gallery.no-images">Keine Bilder verfügbar.</div>
+} @else {
+  @for (image of animal().gallery; track $index) {
+    <ui-animal-card [name]="animal().name" [image]="image" [description]="animal().description"></ui-animal-card>
+  }
 }

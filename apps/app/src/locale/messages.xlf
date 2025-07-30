@@ -2,6 +2,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="de" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="animal-gallery.no-images" datatype="html">
+        <source>Keine Bilder verfügbar.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/components/animal-gallery/animal-gallery.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="animals-list.loading-error" datatype="html">
         <source>Fehler beim Laden der Tiere</source>
         <context-group purpose="location">
@@ -20,7 +27,7 @@
         <source>Zurück</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/features/animals/animals-ui/src/lib/components/animals-list/animals-list.component.html</context>
-          <context context-type="linenumber">21,22</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="animals-page.title" datatype="html">

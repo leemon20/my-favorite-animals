@@ -1,50 +1,58 @@
-// import { NO_ERRORS_SCHEMA } from '@angular/core';
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { PLACEHOLDER_IMAGE } from '../../placeholder-image';
-// import { AnimalCardComponent } from './animal-gallery.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { AnimalModel } from '@my-favorite-animals/animals-data';
+import { AnimalGalleryComponent } from './animal-gallery.component';
 
-// describe('AnimalCardComponent', () => {
-//   let fixture: ComponentFixture<AnimalCardComponent>;
+describe('AnimalGalleryComponent', () => {
+  let fixture: ComponentFixture<AnimalGalleryComponent>;
+  let animal: AnimalModel;
 
-//   const name = '[NAME]';
-//   const image = '[IMAGE_URL]';
-//   const description = '[DESCRIPTION]';
+  beforeEach(async () => {
+    animal = {
+      id: '[ID]',
+      name: '[NAME]',
+      description: '[DESCRIPTION]',
+      gallery: [],
+    };
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       imports: [AnimalCardComponent],
-//     })
-//       .overrideComponent(AnimalCardComponent, {
-//         set: {
-//           imports: [],
-//           schemas: [NO_ERRORS_SCHEMA],
-//         },
-//       })
-//       .compileComponents();
+    await TestBed.configureTestingModule({
+      imports: [AnimalGalleryComponent],
+    })
+      .overrideComponent(AnimalGalleryComponent, {
+        set: {
+          imports: [],
+          providers: [],
+          schemas: [NO_ERRORS_SCHEMA],
+        },
+      })
+      .compileComponents();
 
-//     fixture = TestBed.createComponent(AnimalCardComponent);
+    fixture = TestBed.createComponent(AnimalGalleryComponent);
 
-//     fixture.componentRef.setInput('name', name);
-//     fixture.componentRef.setInput('image', image);
-//     fixture.componentRef.setInput('description', description);
-//     fixture.detectChanges();
-//   });
+    fixture.componentRef.setInput('animal', animal);
+    fixture.detectChanges();
+  });
 
-//   it('should render card', () => {
-//     const el = fixture.debugElement.query(By.css('mat-card'));
-//     expect(el).toBeTruthy();
+  const noImagesMessageEl = () => fixture.debugElement.query(By.css('[data-test-id="no-images"]'));
+  const animalCardEls = () => fixture.debugElement.queryAll(By.css('ui-animal-card'));
 
-//     const imgEl = el.query(By.css('img'));
-//     expect(imgEl).toBeTruthy();
-//     expect(imgEl.properties['ngSrc']).toBe(image);
-//     expect(imgEl.nativeElement.attributes['alt'].value).toBe(name);
-//     expect(imgEl.nativeElement.attributes['width'].value).toBe('400');
-//     expect(imgEl.nativeElement.attributes['height'].value).toBe('200');
-//     expect(imgEl.properties['placeholder']).toBe(PLACEHOLDER_IMAGE);
+  it('should display proper message when no images are available', () => {
+    expect(noImagesMessageEl().nativeElement.textContent).toContain('@@animal-gallery.no-images');
+    expect(animalCardEls().length).toBe(0);
+  });
 
-//     const contentEl = el.query(By.css('mat-card-content'));
-//     expect(contentEl).toBeTruthy();
-//     expect(contentEl.nativeElement.textContent).toBe(description);
-//   });
-// });
+  it('should display images when available', () => {
+    const animalWithImages = { ...animal, gallery: ['[IMAGE_1]'] };
+
+    fixture.componentRef.setInput('animal', animalWithImages);
+    fixture.detectChanges();
+
+    expect(noImagesMessageEl()).toBeFalsy();
+
+    expect(animalCardEls().length).toBe(1);
+    expect(animalCardEls()[0].properties['name']).toBe(animalWithImages.name);
+    expect(animalCardEls()[0].properties['image']).toBe(animalWithImages.gallery[0]);
+    expect(animalCardEls()[0].properties['description']).toBe(animalWithImages.description);
+  });
+});
