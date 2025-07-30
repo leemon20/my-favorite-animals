@@ -4,7 +4,7 @@
   @if ($loading()) {
     <mat-spinner></mat-spinner>
   } @else if ($error()) {
-    <div i18n="@@animals-of-day-widget.loading-error">Error loading animals</div>
+    <div data-test-id="loading-error" i18n="@@animals-of-day-widget.loading-error">Error loading animals</div>
   } @else {
     @let animal = $animal();
 
@@ -17,7 +17,7 @@
         ></ui-animal-card>
       </div>
     } @else {
-      <div i18n="@@animals-of-day-widget.empty">Lieblingstier des Tages nicht gefunden</div>
+      <div data-test-id="empty-state" i18n="@@animals-of-day-widget.empty">Lieblingstier des Tages nicht gefunden</div>
     }
   }
 </div>

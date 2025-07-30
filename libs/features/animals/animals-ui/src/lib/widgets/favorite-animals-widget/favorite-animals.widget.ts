@@ -18,10 +18,10 @@ export class FavoriteAnimalsWidget implements OnInit {
   private readonly animalstateQueries = inject(AnimalsStateQueries);
   private readonly navigationService = inject(NavigationService);
 
-  public $loading = this.animalstateQueries.$favoriteAnimalLoading;
-  public $error = this.animalstateQueries.$animalOfDayLoadingError;
-  public $animals = this.animalstateQueries.$favoriteAnimals;
-  public $animalImage = computed(() => {
+  protected $loading = this.animalstateQueries.$favoriteAnimalLoading;
+  protected $error = this.animalstateQueries.$animalOfDayLoadingError;
+  protected $animals = this.animalstateQueries.$favoriteAnimals;
+  protected $animalImage = computed(() => {
     const animals = this.$animals() ?? [];
 
     return animals.reduce((acc, animal) => {

@@ -16,9 +16,9 @@ export class AnimalOfDayWidget implements OnInit {
   private readonly store = inject(Store);
   private readonly animalstateQueries = inject(AnimalsStateQueries);
 
-  public $loading = this.animalstateQueries.$animalOfDayLoading;
-  public $error = this.animalstateQueries.$animalOfDayLoadingError;
-  public $animal = this.animalstateQueries.$animalOfDay;
+  protected $loading = this.animalstateQueries.$animalOfDayLoading;
+  protected $error = this.animalstateQueries.$animalOfDayLoadingError;
+  protected $animal = this.animalstateQueries.$animalOfDay;
 
   ngOnInit(): void {
     this.store.dispatch(new LoadAnimalOfDayAction());
