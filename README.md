@@ -42,10 +42,12 @@ Use of NGXS (any other redux like library e.g. ngrx would also be fine) was inte
 
 ## Nx - Desicion Drivers
 
-- Module Boundary Rules - ESLint rule that enforces import restrictions based on tags and project relationships.
+- Module Boundary Rules (applied in this project) - ESLint rule that enforces import restrictions based on tags and project relationships.
 - Project Graph - Nx's representation of your workspace showing projects and their dependencies.
 - Tags - Project tags are used to categorize and group projects, which then work with the module boundary rules to control imports.
 - No monolithic `angular.json` file but package locale `project.json` files.
+
+To see Module Boundary Rules in action import `AnimalsState` and add it to the `providers: [AnimalsState],` in `DashboardPage`. Linter should complain about `AnimalsState` import violating a module boundary.
 
 ## Valibot - Desicion Drivers
 
