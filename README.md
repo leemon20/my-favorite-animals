@@ -2,100 +2,135 @@
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+An Nx-managed Angular monorepo focused on modularity, testing, and localization.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Key Technologies
 
-## Run tasks
+- **Nx**: Monorepo management, code generation, and task orchestration
+- **NGXS + Plugins**: State management
+- **Valibot**: DTO parsing and validation
+- **@angular/localize**: Localization with separate build outputs for `de` (default) and `en-US`
+- **@angular/material**: Material Design Components
 
-To run the dev server for your app, use:
+## Project Structure
 
-```sh
-npx nx serve app
-```
+- `apps/app`: Main Angular application
+- `apps/app-e2e`: End-to-end tests (Playwright)
+- `libs/features/animals`: Animals feature libraries (UI, data, widgets)
+- `libs/features/dashboard`: Dashboard feature library (UI, data, widgets)
+- `libs/common/ui`: Shared UI components
 
-To create a production bundle:
+## Feature Libraries Structure
 
-```sh
-npx nx build app
-```
+- `libs/features/animals/animals-data`: rule of thumb -> everything `@Injectable({ providedIn: 'root' })`
+  - store (state, actions, queries, model)
+  - domain models
+  - services (e.g. data fetching, navigation)
+- `libs/features/animals/animals-ui`: feature ui (pages, components, routes)
+- `libs/features/animals/animals-widgets`: embeddable ui to be consumed by other features
+  - encapsulates data access, other features do not have to know how and where the data comes from
 
-To see all available targets to run for a project, run:
+### Decision drivers:
 
-```sh
-npx nx show project app
-```
+Allows for fine grained chunk generation in combination with lazy loading (dynamic imports). app lazy loads dashboard and animals. dashboard only uses widgets coming from the widgets package. only when navigating to animals, either from dashboard or directly visiting the page, the animals page + components are getting loaded.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+`animals-data` package is used inside the `animals-widgets` and `animals-ui` package which makes it a common dependency across those packages which allows the bundler making it a separate chunk.
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## State Management - Decision Drivers
 
-## Add new projects
+Use of NGXS (any other redux like library e.g. ngrx would also be fine) was intended. Currently not used inside this project but the use of platforms like Sentry allows for fine grained debugging and early error discovery due to all the actions dispached being recorded. Combined with redux timeline feature allows for even more easier replication of app misbehaviour.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## Nx - Desicion Drivers
 
-Use the plugin's generator to create new projects.
+- Module Boundary Rules - ESLint rule that enforces import restrictions based on tags and project relationships.
+- Project Graph - Nx's representation of your workspace showing projects and their dependencies.
+- Tags - Project tags are used to categorize and group projects, which then work with the module boundary rules to control imports.
+- No monolithic `angular.json` file but package locale `project.json` files.
 
-To generate a new application, use:
+## Valibot - Desicion Drivers
 
-```sh
-npx nx g @nx/angular:app demo
-```
+Validating/Parsing actual incoming DTOs as Typescript types are stripped away during compilation and have no effect on the resulting js output. Without DTO parsing any object structure could be injected into the app and it would still assume it is working with the intended structure.
+Valibot also strips away properties that are not defined by the schema, leaving only those that were specified.
 
-To generate a new library, use:
+## Localisation - Desicion Drivers
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
+Using angular localize package with compile time instead of runtime localisation. Coming form the question "how often do you change the language of the app you are frequently using". My personal answer to this question is almost never once done thus compile time localisation resulting in a reroute/page reload on language change.
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+Another runtime localisation solution could be imeplemented through [Transloco](https://github.com/jsverse/transloco)
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Core Commands
 
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
-```sh
-npx nx connect
-```
-
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
+### E2E Testing
 
 ```sh
-npx nx g ci-workflow
+npx nx run app-e2e:e2e
+
+# UI with timeline, logs, tests cases, etc.
+npx nx run app-e2e:e2e --ui
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Unit Testing
 
-## Install Nx Console
+```sh
+npx nx run <project-name>:test --watch --ui --coverage
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+# run all tests in all packages
+npx nx run-many --target=test --all --parallel --coverage
+```
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+`<project-name>` is the `name` property inside `project.json` of each package.
 
-## Useful links
+### Serving the App
 
-Learn more:
+```sh
+# Default (de)
+npx nx run app:serve:development
+# or (default development)
+npx nx run app:serve:de
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+# English (en-US)
+npx nx run app:serve:development --configuration=en-US
+# or (default development)
+npx nx run app:serve:en-US
+```
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### Building the App
+
+```sh
+# Defaults to production, generates de + en-US outputs
+npx nx run app:build
+# or production explicit, generates de + en-US outputs
+npx nx run app:build:production
+
+# development, generates de + en-US outputs
+npx nx run app:build:development
+```
+
+### Internationalization
+
+```sh
+npx nx extract-i18n app
+```
+
+Updates `apps/app/src/locale/messages.xlf`, manual adjustments/translations must be done for `messages.en-US.xlf`
+
+### Project Graph
+
+```sh
+npx nx graph app
+```
+
+Visualize dependencies, lazy loading, and package relationships.
+
+## What’s Missing / TODO
+
+- Integrate HttpClient for real API calls
+- Pass base URL via injection tokens for environment-specific configuration
+- Expand E2E tests to cover real HTTP scenarios when backend is available
+
+## Useful Links
+
+- [Nx Documentation](https://nx.dev)
+- [NGXS Documentation](https://www.ngxs.io/)
+- [Valibot Documentation](https://valibot.dev/)
+- [Angular Localization](https://angular.dev/guide/i18n)
