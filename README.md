@@ -110,6 +110,8 @@ npx serve -c ../../../../serve.json
 
 ```sh
 npx nx run <project-name>:test --watch --ui --coverage
+# e.g.
+npx nx run app:test
 
 # run all tests in all packages
 npx nx run-many --target=test --all --parallel --coverage
