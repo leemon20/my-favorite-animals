@@ -108,6 +108,8 @@ npx nx run app:build:production
 npx nx run app:build:development
 ```
 
+Build produces a `stats.json` (`dist/apps/app/stats.json`) that can be analyzed through [Bundle Size Analyzer](https://esbuild.github.io/analyze/)
+
 ### Internationalization
 
 ```sh
