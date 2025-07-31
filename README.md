@@ -1,7 +1,5 @@
 # MyFavoriteAnimals
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
-
 An Nx-managed Angular monorepo focused on modularity, testing, and localization.
 
 ## Key Technologies
@@ -60,27 +58,16 @@ Using angular localize package with compile time instead of runtime localisation
 
 Another runtime localisation solution could be imeplemented through [Transloco](https://github.com/jsverse/transloco)
 
+## Project Setup
+
+```sh
+npm i
+
+# e2e dependencies
+npx playwright install
+```
+
 ## Core Commands
-
-### E2E Testing
-
-```sh
-npx nx run app-e2e:e2e
-
-# UI with timeline, logs, tests cases, etc.
-npx nx run app-e2e:e2e --ui
-```
-
-### Unit Testing
-
-```sh
-npx nx run <project-name>:test --watch --ui --coverage
-
-# run all tests in all packages
-npx nx run-many --target=test --all --parallel --coverage
-```
-
-`<project-name>` is the `name` property inside `project.json` of each package.
 
 ### Serving the App
 
@@ -110,6 +97,33 @@ npx nx run app:build:development
 
 Build produces a `stats.json` (`dist/apps/app/stats.json`) that can be analyzed through [Bundle Size Analyzer](https://esbuild.github.io/analyze/)
 
+Serving both localised versions, accessible through
+
+```sh
+cd ./dist/apps/app/browser
+npx serve -c ../../../../serve.json
+```
+
+### Unit Testing
+
+```sh
+npx nx run <project-name>:test --watch --ui --coverage
+
+# run all tests in all packages
+npx nx run-many --target=test --all --parallel --coverage
+```
+
+`<project-name>` is the `name` property inside `project.json` of each package.
+
+### E2E Testing
+
+```sh
+npx nx run app-e2e:e2e
+
+# UI with timeline, logs, tests cases, etc.
+npx nx run app-e2e:e2e --ui
+```
+
 ### Internationalization
 
 ```sh
@@ -129,6 +143,7 @@ Visualize dependencies, lazy loading, and package relationships.
 ## What’s Missing / TODO
 
 - Integrate HttpClient for real API calls
+- Setting current locale as header in request to get localised animal description
 - Pass base URL via injection tokens for environment-specific configuration
 - Expand E2E tests to cover real HTTP scenarios when backend is available
 
