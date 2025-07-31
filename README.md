@@ -157,3 +157,4 @@ Visualize dependencies, lazy loading, and package relationships.
 - [NGXS Documentation](https://www.ngxs.io/)
 - [Valibot Documentation](https://valibot.dev/)
 - [Angular Localization](https://angular.dev/guide/i18n)
+- [Angular Material](https://material.angular.dev/)
