@@ -72,7 +72,9 @@ npx playwright install
 ### Serving the App
 
 ```sh
-# Default (de)
+# (default development, de)
+npx nx run app:serve
+# or default (de)
 npx nx run app:serve:development
 # or (default development)
 npx nx run app:serve:de
