@@ -4,7 +4,7 @@
   "sourceRoot": "libs/features/animals/animals-data/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:data", "scope:animals"],
   "targets": {
     "test": {
       "executor": "@nx/vite:test",

@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/app/src",
-  "tags": [],
+  "tags": ["app:app"],
   "i18n": {
     "sourceLocale": "de",
     "locales": {

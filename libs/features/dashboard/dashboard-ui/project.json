@@ -4,7 +4,7 @@
   "sourceRoot": "libs/features/dashboard/dashboard-ui/src",
   "prefix": "lib",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:ui", "scope:dashboard"],
   "targets": {
     "test": {
       "executor": "@nx/vite:test",
